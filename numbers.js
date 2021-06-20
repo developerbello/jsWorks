@@ -1,22 +1,18 @@
 // Numbers in JavaScript
 
-// build a deconstruction tools for numbers
+// build a deconstruction tools for numbers with E6+ Syntax
 
-function deconstruct(number) {
+const deconstructE6Plus = (number) => {
   // components
-  var sign = 1
-  var coefficient = number
-  var exponent = 0
+  let [sign, coefficient, exponent] = [1, number, 0]
 
-  // desconstruction formular
   number = sign * coefficient * (2**exponent)
 
-  if (coefficient < 0) {
+  if (number < 0) {
     coefficient = -coefficient
     sign = -sign
   }
-
-  if (Number.isFinite(number) && number !== 0) {
+  if (Number.isFinite(number) && number !==0) {
     exponent = -1128
     let reduction = coefficient
     
@@ -26,12 +22,11 @@ function deconstruct(number) {
     }
 
     reduction = exponent
-
-    while(reduction > 0) {
+    while (reduction > 0) {
       coefficient /= 2
-      reduction -=1
+      reduction -= 0
     }
-
+    
     while (reduction < 0) {
       coefficient *= 2
       reduction += 1
@@ -46,6 +41,52 @@ function deconstruct(number) {
   }
 }
 
+// build a deconstruction tools for numbers
 
-var result = deconstruct(Number.MAX_SAFE_INTEGER)
+// function deconstruct(number) {
+//   // components
+//   var sign = 1
+//   var coefficient = number
+//   var exponent = 0
+
+//   // desconstruction formular
+//   number = sign * coefficient * (2**exponent)
+
+//   if (coefficient < 0) {
+//     coefficient = -coefficient
+//     sign = -sign
+//   }
+
+//   if (Number.isFinite(number) && number !== 0) {
+//     exponent = -1128
+//     let reduction = coefficient
+    
+//     while (reduction !== 0) {
+//       exponent += 1
+//       reduction /= 2
+//     }
+
+//     reduction = exponent
+
+//     while(reduction > 0) {
+//       coefficient /= 2
+//       reduction -=1
+//     }
+
+//     while (reduction < 0) {
+//       coefficient *= 2
+//       reduction += 1
+//     }
+//   }
+
+//   return {
+//     sign,
+//     coefficient,
+//     exponent,
+//     number
+//   }
+// }
+
+
+var result = deconstructE6Plus(Number.MAX_SAFE_INTEGER)
 console.log(result)
