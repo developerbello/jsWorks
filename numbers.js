@@ -10,9 +10,10 @@ const deconstructE6Plus = (number) => {
 
   if (number < 0) {
     coefficient = -coefficient
-    sign = -sign
+    sign = -1
   }
-  if (Number.isFinite(number) && number !==0) {
+  
+  if (Number.isFinite(number) && number !== 0) {
     exponent = -1128
     let reduction = coefficient
     
@@ -24,7 +25,7 @@ const deconstructE6Plus = (number) => {
     reduction = exponent
     while (reduction > 0) {
       coefficient /= 2
-      reduction -= 0
+      reduction -= 1
     }
     
     while (reduction < 0) {
