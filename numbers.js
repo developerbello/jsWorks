@@ -4,9 +4,9 @@
 
 const deconstructE6Plus = (number) => {
   // components
-  let [sign, coefficient, exponent] = [1, number, 0]
+  let [ sign, coefficient, exponent ] = [ 1, number, 0 ] // es6+ Array Destructuring
 
-  number = sign * coefficient * (2**exponent)
+  number = sign * coefficient * (2**exponent) // Formular
 
   if (number < 0) {
     coefficient = -coefficient

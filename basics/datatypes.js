@@ -30,6 +30,3 @@ if (values === undefined) {
 } else {
   console.log('No');
 }
-
-// CSS NOTE
-// * : A universal selector, selects all element and apply the specified properties.
